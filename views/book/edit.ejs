@@ -1,0 +1,30 @@
+<%- include('../includes/header.ejs')%>
+<link rel="stylesheet" href="/css/book.css">
+<%- include('../includes/navbar.ejs')%>
+
+    <% if(books.length>0) { %>
+        <div class='main'>
+        <%books.forEach((book)=>{%>
+            
+                <div class="card">
+                    <div class="card-header">
+                      <%=book.title%>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">author : <%=book.author%></h5>
+                      <h5 class="card-title">price : $<%=book.price%></h5>
+                    
+                        <a class='edit' href="/edit/<%=book._id%>">Edit</a>
+                        <a class='edit' href="/delete/<%=book._id%>">Delete</a>
+                       
+                    </div>
+                  </div>
+            
+            
+            <%})%>
+        </div>
+        <%}else{%>
+          <h4 style="justify-content:center;text-align: center;margin: 50px auto;">you have not uploaded any book yet😢</h4>
+          
+            <%}%>
+<%- include('../includes/footer.ejs')%>

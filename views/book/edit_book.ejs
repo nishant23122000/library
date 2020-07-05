@@ -1,0 +1,107 @@
+<%- include('../includes/header.ejs')%>
+
+<%- include('../includes/navbar.ejs')%>
+<link rel="stylesheet" href="/css/form.css">
+
+<h3 style="margin-top: 20px; justify-content: center; text-align: center;">provide book details to upload</h3>
+<div class="main">
+
+    <div class="container">
+        <div class="signup-content">
+           
+            <div class="signup-form">
+                <form action="<%if(edit){%> /edit_book <%}else{%> /add_book <%}%>" method="POST" class="register-form" id="register-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <%if(!edit){%>
+                            <div class="form-input">
+                                <label for="title" class="required">Book Title</label>
+                                <input type="text" name="title" id="first_name" />
+                            </div>
+                            <%}%>
+                            <div class="form-input">
+                                <label for="price" class="required">Book Price</label>
+                                <input type="number" value="<%if(edit)%><%=book.price%>" name="price" id="email" />
+                            </div>
+                            <div class="form-input">
+                                <label for="copies" class="required">Available Copy</label>
+                                <input type="number" value="<%if(edit)%><%=book.copies%>" name="copies" id="company" />
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <div class="form-select">
+                                <%if(!edit){%>
+                                <div class="form-input">
+                                    <label for="author" class="required">Author Name</label>
+                                    <input type="text" name="author" id="last_name" />
+                                </div>
+                                <%}%>
+                                
+                                <%if(edit){%>
+                                    <input type="hidden" name="id" value="<%=book._id%>">
+                                        <%}%>
+                                <div class="form-input">
+                                    <label for="description" class="required">Book description</label>
+                                    <input type="text" value="<%if(edit)%><%=book.description%>" name="description" id="phone_number" />
+                                </div>
+                                <div class="imageUrl">
+                                    <label for="imageUrl" class="required">Book ImageUrl</label>
+                                    <input type="text" value="<%if(edit)%><%=book.imageUrl%>" name="imageUrl" id="first_name" />
+                                </div>
+                             
+                                
+                            </div>
+                            
+                            </div>
+                           
+                            <div class="form-submit">
+                                <input type="submit" value="<%if(edit){%>Edit<%}else{%> Add-book<%}%>" class="submit" id="submit" name="submit" />
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </form>
+            </div>
+          
+        </div>
+           
+    </div>
+
+</div>
+
+<!-- JS -->
+
+<!-- <div class='center'>
+    <form action="<%if(edit){%> /edit_book <%}else{%> /add_book <%}%>" method="POST">
+        <%if(!edit){%>
+        <label for="title">Enter title :</label>
+        <input type="text" name="title"  placeholder="title">
+        
+            <label for="author">Enter author name:</label>
+            <input type="text" name="author"  placeholder="author">
+        <%}%>
+     
+        <label for="copies">How many copy available u have?</label>
+        <input type="text" name="copies" value="<%if(edit)%><%=book.copies%>" placeholder="copies">
+        <label for="price">Eenter price:</label>
+        <input type="text" name="price" value="<%if(edit)%><%=book.price%>" placeholder="price">
+        <label for="description">description:</label>
+        <input type="text" name="description" value="<%if(edit)%><%=book.description%>" placeholder="description">
+        <label for="imageUrl">ImageUrl:</label>
+        <input type="text" name="imageUrl" value="<%if(edit)%><%=book.imageUrl%>" placeholder="imageUrl">
+        <%if(edit){%>
+        <input type="hidden" name="id" value="<%=book._id%>">
+            <%}%>
+            
+        <div class='button'>
+            <button type="submit"><%if(edit){%>Edit<%}else{%> Add-book<%}%></button>
+        </div>
+        
+    </form>
+</div> -->
+
+<%- include('../includes/footer.ejs')%>

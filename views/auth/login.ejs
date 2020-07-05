@@ -1,0 +1,52 @@
+
+<%- include('../includes/header.ejs') %>
+
+
+<%- include('../includes/navbar.ejs') %>
+<link rel="stylesheet" href="/css/signup.css">
+<%if(errorMsg.length){%>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong><%=errorMsg%></strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+   <%}%>
+<!-- <main>
+        <form action="/login" class='product-form' method="POST">
+            <div class='email'>
+              <label for="email">Email</label>
+                <input type="email" name="email" id="email" >
+            </div>
+            <div class='password'>
+            <label for="password">Password</label>
+            <input type="password" name="password" >
+            </div>
+              
+            <button class='btn' type="submit">Login</button>
+        </form>
+        </main> -->
+        <div class="wrapper">
+          <div class="inner">
+            <div class="image-holder">
+              <img st src="/images/book.jpg" alt="">
+            </div>
+            <form action="/login" method="POST">
+              <h3>Sign In</h3>
+             
+              <div class="form-holder">
+                <input type="email" name='email' placeholder="e-mail" class="form-control">
+              </div>
+              <div class="form-holder">
+                <input type="password" name='password' placeholder="Password" class="form-control" style="font-size: 15px;">
+              </div>
+             
+              <div class="form-login">
+                <button type="submit">Log in</button>
+                <p style="margin-left: 35px;"><a  href="/reset">forget password</a></p>
+                <p>dont Have a Account? <a href="/signup">Signup</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+        <%- include('../includes/footer.ejs') %>

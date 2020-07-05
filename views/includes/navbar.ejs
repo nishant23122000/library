@@ -1,0 +1,56 @@
+
+</head>
+<style>
+  .nav-link{
+    font-weight: 600;
+  }
+  a{
+   color: black;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  .active{
+    color:crimson !important;
+    font-weight: 700;
+  }
+  body{
+    font-family: 'Raleway', sans-serif;
+    background: #ecf0f1;
+  }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" href="#">Booker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link <%=path==='/book' ? 'active' : ''%>" href="/">Books<span class="sr-only">(current)</span></a>
+            </li>
+            <%if(isAuth){%>
+            <li class="nav-item">
+              <a class="nav-link <%=path==='/add' ? 'active' : ''%>" href="/add_book">Add-book</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link <%=path==='/edit' ? 'active' : ''%>" href="/edit_delete">Edit-book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <%=path==='/locker' ? 'active' : ''%>" href="/locker">Your Locker</a>
+            </li>
+            <%}%>
+          </ul>
+         
+          <%if(!isAuth){%>
+            
+          <a class="my-2 my-lg-0 <%=path==='/login' ? 'active' : ''%>" href="/login">Login <span class="sr-only">(current)</span></a>
+          <a style="margin-left:20px" class="my-2 my-lg-0 <%=path==='/signup' ? 'active' : ''%>" href="/signup">Signup <span class="sr-only">(current)</span></a>
+          <%}else{%>
+    <a style="margin-left: 20px;" class=" my-2 my-lg-0 <%=path==='/logout' ? 'active' : ''%> " href="/logout">Logout <span class="sr-only">(current)</span></a>
+            <%}%>
+  </div>
+      </nav>

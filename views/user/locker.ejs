@@ -1,0 +1,112 @@
+<%- include('../includes/header.ejs')%>
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/book2.css" />
+
+
+<%- include('../includes/navbar.ejs')%>
+  
+      <% if(books) { %>
+        
+        <div class="container">
+          <%books.forEach((book)=>{%>
+           
+           
+             
+              
+           
+              <!-- Top Navigation -->
+              
+             
+              <div class="component">
+                <div class="show alert alert-primary" role="alert">
+                  A simple primary alert—check it out!
+                </div>
+                <ul class="align">
+                  <li>
+                    <figure class='book'>
+        
+                      <!-- Front -->
+        
+                      <ul class='paperback_front' style="background-image: <%if(locker){%>url(<%=book.bookId.imageUrl%>)<%}else{%>url(<%=book.imageUrl%>)<%}%>; background-size: cover;">
+                        
+                        <li>
+                         
+                          <img src="img/bg.jpg" alt="" width="100%" height="100%">
+                        </li>
+                        <li></li>
+                      </ul>
+        
+                      <!-- Pages -->
+        
+                      <ul class='ruled_paper'>
+                        <li></li>
+                        <li>
+                          <a class="btn" href="#"><%if(locker){%><%=book.bookId.title%><%}else{%><%=book.title%><%}%></a>
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                      </ul>
+                      
+                      <!-- Back -->
+        
+                      <ul class='paperback_back'>
+                        <li>
+                          <img src="img/bg.jpg" alt="" width="100%" height="100%">
+                        </li>
+                        <li></li>
+                      </ul>
+                      
+                      <figcaption>
+                        <h1><%if(locker){%><%=book.bookId.title%><%}else{%><%=book.title%><%}%></h1>
+                        <span>By <%if(locker){%><%=book.bookId.author%><%}else{%><%=book.author%><%}%></span>
+                        <p class='des'><%if(locker){%><%=book.bookId.description%><%}else{%><%=book.description%><%}%></p>
+                        
+                        <%if(locker){%>
+                          <div class='locsp'></div>
+                        <a class='locker' href="/delete_from_locker/<%=book.bookId._id%>"> Delete</a>
+                        
+                        
+                       
+                        <%}else{%>
+                          <p>Available Copies: <%if(locker){%><%=book.bookId.copies%><%}else{%><%=book.copies%><%}%></p>
+                        <h5>Price: $<%if(locker){%><%=book.bookId.price%><%}else{%><%=book.price%><%}%></h5>
+                        <div class='sp'></div>
+                        <%if(isAuth){%>
+                        <a onclick="alert()" class='locker' href="/add-locker/<%=book._id%>">Add To Locker</a>
+                        <%}%>  
+                        <%}%>
+                        
+                      </figcaption>
+                     
+                    </figure>
+                  </li>
+                  <li>
+                    <figure class='book'>
+        
+                                        </li>
+                </ul>
+               
+              </div>
+              
+           
+              <!-- <div class='sp'></div> -->
+          <%})%>
+        </div>
+      <%}else{%>
+        <h4 style="justify-content:center;text-align: center;margin: 50px auto;">You Have not any book in your locker</h4>
+        
+      <%}%> 
+      <script>
+        function alert(){
+          console.log('sdfd')
+          var a =document.querySelectorAll('.alert')
+          a.style.visibility = visible
+          console.log(a)
+        }
+      </script>   
+<%- include('../includes/footer.ejs')%>
